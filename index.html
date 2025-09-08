@@ -311,6 +311,7 @@
             <button class="btn btn-nav" onclick="showPage('match-summary-selector')">Súmula</button>
             <button class="btn btn-nav" id="save-championship-btn">Salvar Campeonato</button>
             <button class="btn btn-nav" id="load-championship-btn">Carregar Campeonato</button>
+            <button class="btn btn-nav" id="reload-data-btn">Recarregar Dados</button>
             <button class="btn btn-danger" id="reset-championship-btn">Resetar Campeonato</button>
         </nav>
 
@@ -632,7 +633,7 @@
     <script>
 
         // carregamento do banco
-        fetch('./campeonato.json')
+        fetch('./campeonato.json?v=' + new Date().getTime())
             .then(r => r.json())
             .then(data => {
                 console.log('OK JSON', data);
@@ -1394,6 +1395,25 @@
             }
         };
 
+        const reloadData = () => {
+            fetch('./campeonato.json?v=' + new Date().getTime())
+                .then(r => r.json())
+                .then(data => {
+                    if (data && typeof data === 'object') {
+                        appState = data;
+                        saveState();
+                        updateUI();
+                        showMessage(document.getElementById('home-message'), 'Dados recarregados com sucesso!', 'success');
+                    } else {
+                        throw new Error('Dados inválidos');
+                    }
+                })
+                .catch(err => {
+                    console.error('Erro ao recarregar JSON:', err);
+                    showMessage(document.getElementById('home-message'), 'Erro ao recarregar dados. Verifique o arquivo JSON.', 'error');
+                });
+        };
+
         // Initial load
         window.onload = () => {
             loadState();
@@ -1425,6 +1445,7 @@
             }
         });
         document.getElementById('reset-championship-btn').addEventListener('click', resetChampionship);
+        document.getElementById('reload-data-btn').addEventListener('click', reloadData);
         
     </script>
 </body>
