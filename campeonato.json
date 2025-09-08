@@ -113,6 +113,104 @@
       "jerseyNumber": 15,
       "position": "Meio-campo",
       "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-lc4mtw7bx",
+      "name": "Carlos ALEXANDRE Curti",
+      "jerseyNumber": 1,
+      "position": "Goleiro",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-blqcoqee2",
+      "name": "VALDIR Alves da Silva",
+      "jerseyNumber": 7,
+      "position": "Lateral",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-tkkbblj5m",
+      "name": "ANDRE Eduardo",
+      "jerseyNumber": 22,
+      "position": "Lateral",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-pr4au9cea",
+      "name": "ALDO Ferreira de Souza",
+      "jerseyNumber": 6,
+      "position": "Meio-campo",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-k8xcvj9xo",
+      "name": "PAULO Eleuterio",
+      "jerseyNumber": 20,
+      "position": "Meio-campo",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-gapx30vx4",
+      "name": "Aroldo B. da Silva BOLINHA",
+      "jerseyNumber": 2,
+      "position": "Lateral",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-6jzdb1kqx",
+      "name": "Leonardo Aleluia LEO",
+      "jerseyNumber": 99,
+      "position": "Meio-campo",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-yovcn6wj5",
+      "name": "SERGIO Benites",
+      "jerseyNumber": 3,
+      "position": "Lateral",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-xcreferfm",
+      "name": "Naldo Alves  PARAIBA",
+      "jerseyNumber": 77,
+      "position": "Zagueiro",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-vo9nk3epa",
+      "name": "Jose NASCIMENTO dos Santos",
+      "jerseyNumber": 15,
+      "position": "Meio-campo",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-p5qrasnci",
+      "name": "Jamilton A. Oliveira JAMIL",
+      "jerseyNumber": 8,
+      "position": "Meio-campo",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-92s5ojpxz",
+      "name": "Jose HENRIQUE Pandolfo",
+      "jerseyNumber": 9,
+      "position": "Atacante",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-5w13i37cl",
+      "name": "ELIAS Ap. de Souza",
+      "jerseyNumber": 5,
+      "position": "Zagueiro",
+      "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-z1clv3x6j",
+      "name": "MARCELO da Cruz Moreno",
+      "jerseyNumber": 11,
+      "position": "Lateral",
+      "teamId": "T-3vng4nuwj"
     }
   ],
   "matches": [
@@ -355,13 +453,13 @@
       "round": 7,
       "homeTeamId": "T-a2naablk3",
       "awayTeamId": "T-3vng4nuwj",
-      "scoreHome": null,
-      "scoreAway": null,
-      "played": false,
-      "referee": "",
-      "field": "",
-      "matchDate": "",
-      "matchTime": ""
+      "scoreHome": 2,
+      "scoreAway": 3,
+      "played": true,
+      "referee": "Rogerio",
+      "field": "interno",
+      "matchDate": "2025-08-26",
+      "matchTime": "19:28"
     },
     {
       "id": "M-8iht2nze1",
