@@ -29,7 +29,43 @@
       "name": "Liverpol"
     }
   ],
-  "players": [],
+  "players": [
+    {
+      "id": "P-r83rinaaw",
+      "name": "MAURICIO Rafael de Paula",
+      "jerseyNumber": 12,
+      "position": "Goleiro",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-0t2siwzep",
+      "name": "CICERO Pereira",
+      "jerseyNumber": 17,
+      "position": "Atacante",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-qzz0nnc21",
+      "name": "Ireno Cremasco JUNIOR",
+      "jerseyNumber": 19,
+      "position": "Atacante",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-ip9edgjaw",
+      "name": "REGINALDO Rosa de Souza",
+      "jerseyNumber": 4,
+      "position": "Zagueiro",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-dsuvqo4ny",
+      "name": "LEANDRO Luiz de Melo",
+      "jerseyNumber": 5,
+      "position": "Meio-campo",
+      "teamId": "T-a2naablk3"
+    }
+  ],
   "matches": [],
   "events": []
 }
