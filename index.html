@@ -632,17 +632,6 @@
 
     <script>
 
-        // carregamento do banco
-        fetch('./campeonato.json?v=' + new Date().getTime())
-            .then(r => r.json())
-            .then(data => {
-                console.log('OK JSON', data);
-                // ...seu código aqui ...
-        })
-        .catch(err => console.error('Erro ao carregar JSON:', err));
-        // fim do carregamento do banco
-
-
         // Data model
         let appState = {
             teams: [],
@@ -756,6 +745,20 @@
                     if (match.matchDate === undefined) match.matchDate = '';
                     if (match.matchTime === undefined) match.matchTime = '';
                 });
+                updateUI();
+            } else {
+                // Load from JSON
+                fetch('./campeonato.json?v=' + new Date().getTime())
+                    .then(r => r.json())
+                    .then(data => {
+                        appState = data;
+                        saveState();
+                        updateUI();
+                    })
+                    .catch(err => {
+                        console.error('Erro ao carregar JSON:', err);
+                        updateUI(); // update with empty
+                    });
             }
         };
 
@@ -901,17 +904,23 @@
             scorers.sort((a, b) => b.goals - a.goals);
 
             scorersTableBody.innerHTML = '';
-            scorers.forEach((scorer, index) => {
+            if (scorers.length === 0) {
                 const tr = document.createElement('tr');
-                tr.className = 'border-t border-gray-700 hover:bg-white hover:bg-opacity-10 transition-colors duration-150';
-                tr.innerHTML = `
-                    <td class="py-3 px-4 text-gray-200">${index + 1}</td>
-                    <td class="py-3 px-4 text-gray-200 font-medium">${scorer.playerName}</td>
-                    <td class="py-3 px-4 text-gray-200">${scorer.teamName}</td>
-                    <td class="py-3 px-4 text-gray-200">${scorer.goals}</td>
-                `;
+                tr.innerHTML = `<td colspan="4" class="py-3 px-4 text-gray-200 text-center">Nenhum gol registrado ainda.</td>`;
                 scorersTableBody.appendChild(tr);
-            });
+            } else {
+                scorers.forEach((scorer, index) => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-t border-gray-700 hover:bg-white hover:bg-opacity-10 transition-colors duration-150';
+                    tr.innerHTML = `
+                        <td class="py-3 px-4 text-gray-200">${index + 1}</td>
+                        <td class="py-3 px-4 text-gray-200 font-medium">${scorer.playerName}</td>
+                        <td class="py-3 px-4 text-gray-200">${scorer.teamName}</td>
+                        <td class="py-3 px-4 text-gray-200">${scorer.goals}</td>
+                    `;
+                    scorersTableBody.appendChild(tr);
+                });
+            }
         };
 
         const updateCards = () => {
@@ -930,18 +939,24 @@
             cardData.sort((a, b) => (b.yellow + b.red * 2 + b.blue * 0.5) - (a.yellow + a.red * 2 + a.blue * 0.5));
 
             cardsTableBody.innerHTML = '';
-            cardData.forEach(player => {
+            if (cardData.length === 0) {
                 const tr = document.createElement('tr');
-                tr.className = 'border-t border-gray-700 hover:bg-white hover:bg-opacity-10 transition-colors duration-150';
-                tr.innerHTML = `
-                    <td class="py-3 px-4 text-gray-200 font-medium">${player.playerName}</td>
-                    <td class="py-3 px-4 text-gray-200">${player.teamName}</td>
-                    <td class="py-3 px-4 text-yellow-300">${player.yellow}</td>
-                    <td class="py-3 px-4 text-red-400">${player.red}</td>
-                    <td class="py-3 px-4 text-blue-300">${player.blue}</td>
-                `;
+                tr.innerHTML = `<td colspan="5" class="py-3 px-4 text-gray-200 text-center">Nenhum cartão registrado ainda.</td>`;
                 cardsTableBody.appendChild(tr);
-            });
+            } else {
+                cardData.forEach(player => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-t border-gray-700 hover:bg-white hover:bg-opacity-10 transition-colors duration-150';
+                    tr.innerHTML = `
+                        <td class="py-3 px-4 text-gray-200 font-medium">${player.playerName}</td>
+                        <td class="py-3 px-4 text-gray-200">${player.teamName}</td>
+                        <td class="py-3 px-4 text-yellow-300">${player.yellow}</td>
+                        <td class="py-3 px-4 text-red-400">${player.red}</td>
+                        <td class="py-3 px-4 text-blue-300">${player.blue}</td>
+                    `;
+                    cardsTableBody.appendChild(tr);
+                });
+            }
         };
 
         // UI Event Handlers
@@ -1213,6 +1228,7 @@
                 }
             });
 
+            console.log('Events added for match', matchId, appState.events.filter(e => e.matchId === matchId));
             saveState();
             updateUI();
             showMessage(resultMessage, 'Resultado e ocorrências salvos com sucesso!', 'success');
@@ -1440,21 +1456,9 @@
         // Initial load
         window.onload = () => {
             loadState();
-            updateUI();
         };
 
-        // Navigation
-        const navButtons = document.querySelectorAll('nav button');
-        navButtons.forEach(button => {
-            if (button.onclick) {
-                const onclickStr = button.onclick.toString();
-                const match = onclickStr.match(/showPage\('(.+)'\)/);
-                if (match) {
-                    const pageId = match[1];
-                    button.addEventListener('click', () => showPage(pageId));
-                }
-            }
-        });
+
 
         // Championship buttons
         document.getElementById('save-championship-btn').addEventListener('click', saveChampionship);
