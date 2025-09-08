@@ -211,6 +211,160 @@
       "jerseyNumber": 11,
       "position": "Lateral",
       "teamId": "T-3vng4nuwj"
+    },
+    {
+      "id": "P-nqs0675yb",
+      "name": "PEDRO H. Rodrigues",
+      "jerseyNumber": 1,
+      "position": "Goleiro",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-cv4zoamud",
+      "name": "JORGE Akira",
+      "jerseyNumber": 17,
+      "position": "Atacante",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-7pqabj8ca",
+      "name": "WAGNER Benedito Oliveira",
+      "jerseyNumber": 18,
+      "position": "Lateral",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-lkkebjli2",
+      "name": "Antonio S. Dama TONINHO",
+      "jerseyNumber": 20,
+      "position": "Atacante",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-sfbeov737",
+      "name": "Marcio R. C. Monteiro BRED",
+      "jerseyNumber": 5,
+      "position": "Meio-campo",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-8avlk57mu",
+      "name": "LEANDRO F. de Assis",
+      "jerseyNumber": 11,
+      "position": "Atacante",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-uekbdyq38",
+      "name": "ANDRE Sampaio de Souza",
+      "jerseyNumber": 7,
+      "position": "Meio-campo",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-d6xxl3qlz",
+      "name": "EMERSON Almeida",
+      "jerseyNumber": 19,
+      "position": "Meio-campo",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-y8alrtahr",
+      "name": "Claudinei de L. S. NEI",
+      "jerseyNumber": 10,
+      "position": "Meio-campo",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-ihiz200fu",
+      "name": "MARCIO Jose Camargo",
+      "jerseyNumber": 22,
+      "position": "Lateral",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-3vp1hbdt1",
+      "name": "WELLIGTON Lombardi Gimenes",
+      "jerseyNumber": 8,
+      "position": "Meio-campo",
+      "teamId": "T-n5oilrhjm"
+    },
+    {
+      "id": "P-yq65wa8o7",
+      "name": "Willian PADUAN",
+      "jerseyNumber": 40,
+      "position": "Goleiro",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-evd199uou",
+      "name": "ALEXANDRE Jose da Silva",
+      "jerseyNumber": 7,
+      "position": "Meio-campo",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-m1cb1wsnc",
+      "name": "Carlos Romagnoli CARLÃO",
+      "jerseyNumber": 15,
+      "position": "Zagueiro",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-i1lyufeoy",
+      "name": "RAFAEL Alves Benicio",
+      "jerseyNumber": 17,
+      "position": "Lateral",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-zzx7gpdnp",
+      "name": "DHIEGO Bicudo",
+      "jerseyNumber": 11,
+      "position": "Lateral",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-it43co59u",
+      "name": "ANDRE Cristiano Menezes",
+      "jerseyNumber": 8,
+      "position": "Meio-campo",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-2zj6vcnqr",
+      "name": "SERGIO Alves da Silva",
+      "jerseyNumber": 4,
+      "position": "Zagueiro",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-wxvbbcxcc",
+      "name": "EDILSON Ap. Alberto",
+      "jerseyNumber": 19,
+      "position": "Lateral",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-6zg2b2kh1",
+      "name": "Junior Cesar MESSIAS",
+      "jerseyNumber": 5,
+      "position": "Meio-campo",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-6hvink2vg",
+      "name": "EDER Henrique de Souza",
+      "jerseyNumber": 3,
+      "position": "Meio-campo",
+      "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-7tizjq313",
+      "name": "JULIO Cesar Messias",
+      "jerseyNumber": 10,
+      "position": "Atacante",
+      "teamId": "T-ltgzfrw4r"
     }
   ],
   "matches": [
@@ -479,13 +633,13 @@
       "round": 7,
       "homeTeamId": "T-n5oilrhjm",
       "awayTeamId": "T-ltgzfrw4r",
-      "scoreHome": null,
-      "scoreAway": null,
-      "played": false,
-      "referee": "",
-      "field": "",
-      "matchDate": "",
-      "matchTime": ""
+      "scoreHome": 1,
+      "scoreAway": 3,
+      "played": true,
+      "referee": "Rogerio",
+      "field": "Interno",
+      "matchDate": "2025-08-26",
+      "matchTime": "20:44"
     }
   ],
   "events": [
@@ -551,6 +705,55 @@
       "playerId": "P-xcreferfm",
       "type": "yellowCard",
       "minute": 2
+    },
+    {
+      "id": "E-s2k4qiqte",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-y8alrtahr",
+      "type": "goal",
+      "minute": 1
+    },
+    {
+      "id": "E-kv66hjnd4",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-wxvbbcxcc",
+      "type": "goal",
+      "minute": 1
+    },
+    {
+      "id": "E-u5xf8irjl",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-6zg2b2kh1",
+      "type": "goal",
+      "minute": 2
+    },
+    {
+      "id": "E-cw4j1n5cn",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-7tizjq313",
+      "type": "goal",
+      "minute": 2
+    },
+    {
+      "id": "E-4z7t3oyoy",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-7pqabj8ca",
+      "type": "yellowCard",
+      "minute": 1
+    },
+    {
+      "id": "E-a9u0u334o",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-y8alrtahr",
+      "type": "yellowCard",
+      "minute": 2
+    },
+    {
+      "id": "E-3eq4vqa5b",
+      "matchId": "M-1pvyk7czn",
+      "playerId": "P-7tizjq313",
+      "type": "yellowCard",
+      "minute": 1
     }
   ]
 }
