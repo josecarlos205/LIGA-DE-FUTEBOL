@@ -716,8 +716,8 @@
         // Data Persistence
         const saveState = () => {
             localStorage.setItem('leagueState', JSON.stringify(appState));
-            // Enviar dados para o backend para atualizar no GitHub
-            sendToBackend(appState);
+            // Enviar dados para o backend para atualizar no GitHub (desabilitado para uso manual)
+            // sendToBackend(appState);
         };
 
         // Função para enviar dados para o backend
