@@ -64,6 +64,55 @@
       "jerseyNumber": 5,
       "position": "Meio-campo",
       "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-wyy33jaml",
+      "name": "Eleovan Garcia BAN",
+      "jerseyNumber": 11,
+      "position": "Atacante",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-9yr7uj9dw",
+      "name": "ANDRE Rosseti",
+      "jerseyNumber": 18,
+      "position": "Zagueiro",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-gtpfckl1v",
+      "name": "FERNANDO Lopes Faria",
+      "jerseyNumber": 7,
+      "position": "Atacante",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-mw323qh8p",
+      "name": "ANDERSON Carlos de Jesus",
+      "jerseyNumber": 6,
+      "position": "Lateral",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-o8d7ghqs2",
+      "name": "WAGNER Jr Judar",
+      "jerseyNumber": 14,
+      "position": "Lateral",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-gyqmtt91t",
+      "name": "Claudenir dos Anjos NI",
+      "jerseyNumber": 3,
+      "position": "Zagueiro",
+      "teamId": "T-a2naablk3"
+    },
+    {
+      "id": "P-tt9nfdlq9",
+      "name": "JELVANI Marcos Rodrigues",
+      "jerseyNumber": 15,
+      "position": "Meio-campo",
+      "teamId": "T-a2naablk3"
     }
   ],
   "matches": [],

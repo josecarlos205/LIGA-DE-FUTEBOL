@@ -716,6 +716,29 @@
         // Data Persistence
         const saveState = () => {
             localStorage.setItem('leagueState', JSON.stringify(appState));
+            // Enviar dados para o backend para atualizar no GitHub
+            sendToBackend(appState);
+        };
+
+        // Função para enviar dados para o backend
+        const sendToBackend = async (data) => {
+            try {
+                const response = await fetch('http://localhost:3001/update-championship', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ data }),
+                });
+                const result = await response.json();
+                if (result.success) {
+                    console.log('Dados enviados para o backend com sucesso');
+                } else {
+                    console.error('Erro ao enviar dados para o backend:', result.error);
+                }
+            } catch (error) {
+                console.error('Erro na comunicação com o backend:', error);
+            }
         };
 
         const loadState = () => {
