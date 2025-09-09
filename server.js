@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const { Octokit } = require('@octokit/rest');
+const path = require('path');
+const { db } = require('./firebase-admin-config');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -9,13 +10,14 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Configuração do GitHub
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN, // Você deve definir esta variável de ambiente
-});
+// Servir arquivos estáticos do frontend
+app.use(express.static(path.join(__dirname, '/')));
 
-// Endpoint para atualizar o arquivo JSON no GitHub
-app.post('/update-championship', async (req, res) => {
+// Verificar se Firebase Admin está configurado
+const firebaseAvailable = db !== null;
+
+// Endpoint para salvar dados no Firebase
+app.post('/save-championship', async (req, res) => {
   try {
     const { data } = req.body;
 
@@ -23,32 +25,56 @@ app.post('/update-championship', async (req, res) => {
       return res.status(400).json({ error: 'Dados não fornecidos' });
     }
 
-    // Obter o conteúdo atual do arquivo
-    const { data: fileData } = await octokit.repos.getContent({
-      owner: 'josecarlos205', // Substitua pelo seu nome de usuário
-      repo: 'LIGA-DE-FUTEBOL', // Substitua pelo nome do repositório
-      path: 'campeonato.json',
-    });
+    if (!firebaseAvailable) {
+      return res.status(503).json({ error: 'Firebase não configurado. Configure as credenciais do Firebase Admin.' });
+    }
 
-    // Atualizar o arquivo
-    const content = Buffer.from(JSON.stringify(data, null, 2)).toString('base64');
+    // Salvar dados no Firestore
+    await db.collection('championships').doc('current').set(data);
 
-    await octokit.repos.createOrUpdateFileContents({
-      owner: 'josecarlos205',
-      repo: 'LIGA-DE-FUTEBOL',
-      path: 'campeonato.json',
-      message: 'Atualização automática dos dados do campeonato',
-      content: content,
-      sha: fileData.sha,
-    });
-
-    res.json({ success: true, message: 'Arquivo atualizado com sucesso no GitHub' });
+    res.json({ success: true, message: 'Dados salvos com sucesso no Firebase' });
   } catch (error) {
-    console.error('Erro ao atualizar arquivo:', error);
-    res.status(500).json({ error: 'Erro ao atualizar arquivo no GitHub' });
+    console.error('Erro ao salvar dados:', error);
+    res.status(500).json({ error: 'Erro ao salvar dados no Firebase' });
   }
+});
+
+// Endpoint para carregar dados do Firebase
+app.get('/load-championship', async (req, res) => {
+  try {
+    if (!firebaseAvailable) {
+      return res.status(503).json({ error: 'Firebase não configurado. Configure as credenciais do Firebase Admin.' });
+    }
+
+    const doc = await db.collection('championships').doc('current').get();
+
+    if (!doc.exists) {
+      return res.status(404).json({ error: 'Dados não encontrados' });
+    }
+
+    res.json(doc.data());
+  } catch (error) {
+    console.error('Erro ao carregar dados:', error);
+    res.status(500).json({ error: 'Erro ao carregar dados do Firebase' });
+  }
+});
+
+// Endpoint de status
+app.get('/status', (req, res) => {
+  res.json({
+    status: 'running',
+    firebaseConfigured: firebaseAvailable,
+    timestamp: new Date().toISOString()
+  });
 });
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
+  console.log(`Firebase Admin configurado: ${firebaseAvailable ? 'Sim' : 'Não'}`);
+  if (!firebaseAvailable) {
+    console.log('Para habilitar Firebase, configure as variáveis de ambiente:');
+    console.log('- FIREBASE_PROJECT_ID');
+    console.log('- FIREBASE_PRIVATE_KEY');
+    console.log('- FIREBASE_CLIENT_EMAIL');
+  }
 });

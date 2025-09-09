@@ -1,9 +1,41 @@
-<!DOCTYPE html>
+eria<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Campeonato</title>
+    <!-- Firebase CDN -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+        import { getFirestore, collection, doc, setDoc, getDoc, getDocs, updateDoc, deleteDoc, query, where } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAWK-MAArUem82rYhI0xfTAlPqrr8VAStY",
+            authDomain: "liga-de-futebol-b31cd.firebaseapp.com",
+            projectId: "liga-de-futebol-b31cd",
+            storageBucket: "liga-de-futebol-b31cd.firebasestorage.app",
+            messagingSenderId: "298249819923",
+            appId: "1:298249819923:web:b6e275020d791d04882ce6",
+            measurementId: "G-8K3KHN5CKP"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Make db available globally
+        window.db = db;
+        window.collection = collection;
+        window.doc = doc;
+        window.setDoc = setDoc;
+        window.getDoc = getDoc;
+        window.getDocs = getDocs;
+        window.updateDoc = updateDoc;
+        window.deleteDoc = deleteDoc;
+        window.query = query;
+        window.where = where;
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
@@ -630,6 +662,14 @@
         </main>
     </div>
 
+    <!-- inicio SDK Firebase -->    
+        <!-- Firebase core -->
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+        <!-- Auth -->
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+        <!-- Firestore -->
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <!-- fim SDK Firebase -->
     <script>
 
         // Data model
@@ -703,8 +743,36 @@
         };
 
         // Data Persistence
-        const saveState = () => {
-            localStorage.setItem('leagueState', JSON.stringify(appState));
+        const saveState = async () => {
+            try {
+                if (window.db) {
+                    // Save teams
+                    for (const team of appState.teams) {
+                        await setDoc(doc(window.db, 'teams', team.id), team);
+                    }
+                    // Save players
+                    for (const player of appState.players) {
+                        await setDoc(doc(window.db, 'players', player.id), player);
+                    }
+                    // Save matches
+                    for (const match of appState.matches) {
+                        await setDoc(doc(window.db, 'matches', match.id), match);
+                    }
+                    // Save events
+                    for (const event of appState.events) {
+                        await setDoc(doc(window.db, 'events', event.id), event);
+                    }
+                    // Also save to localStorage as backup
+                    localStorage.setItem('leagueState', JSON.stringify(appState));
+                } else {
+                    // Fallback to localStorage only
+                    localStorage.setItem('leagueState', JSON.stringify(appState));
+                }
+            } catch (error) {
+                console.error('Error saving to Firebase:', error);
+                // Fallback to localStorage only
+                localStorage.setItem('leagueState', JSON.stringify(appState));
+            }
             // Enviar dados para o backend para atualizar no GitHub (desabilitado para uso manual)
             // sendToBackend(appState);
         };
@@ -730,35 +798,67 @@
             }
         };
 
-        const loadState = () => {
-            const savedState = localStorage.getItem('leagueState');
-            if (savedState) {
-                appState = JSON.parse(savedState);
-                // Migration for new fields
-                appState.players.forEach(player => {
-                    if (player.jerseyNumber === undefined) player.jerseyNumber = null;
-                    if (player.position === undefined) player.position = null;
-                });
-                appState.matches.forEach(match => {
-                    if (match.referee === undefined) match.referee = '';
-                    if (match.field === undefined) match.field = '';
-                    if (match.matchDate === undefined) match.matchDate = '';
-                    if (match.matchTime === undefined) match.matchTime = '';
-                });
-                updateUI();
-            } else {
-                // Load from JSON
-                fetch('./campeonato.json?v=' + new Date().getTime())
-                    .then(r => r.json())
-                    .then(data => {
-                        appState = data;
-                        saveState();
-                        updateUI();
-                    })
-                    .catch(err => {
-                        console.error('Erro ao carregar JSON:', err);
-                        updateUI(); // update with empty
+        const loadState = async () => {
+            try {
+                if (window.db) {
+                    // Load from Firestore
+                    const teamsSnapshot = await getDocs(collection(window.db, 'teams'));
+                    appState.teams = teamsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    const playersSnapshot = await getDocs(collection(window.db, 'players'));
+                    appState.players = playersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    const matchesSnapshot = await getDocs(collection(window.db, 'matches'));
+                    appState.matches = matchesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    const eventsSnapshot = await getDocs(collection(window.db, 'events'));
+                    appState.events = eventsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    // Migration
+                    appState.players.forEach(player => {
+                        if (player.jerseyNumber === undefined) player.jerseyNumber = null;
+                        if (player.position === undefined) player.position = null;
                     });
+                    appState.matches.forEach(match => {
+                        if (match.referee === undefined) match.referee = '';
+                        if (match.field === undefined) match.field = '';
+                        if (match.matchDate === undefined) match.matchDate = '';
+                        if (match.matchTime === undefined) match.matchTime = '';
+                    });
+                    // Save to localStorage
+                    localStorage.setItem('leagueState', JSON.stringify(appState));
+                    updateUI();
+                } else {
+                    throw new Error('Firebase not available');
+                }
+            } catch (error) {
+                console.error('Error loading from Firebase:', error);
+                // Fallback to localStorage
+                const savedState = localStorage.getItem('leagueState');
+                if (savedState) {
+                    appState = JSON.parse(savedState);
+                    // Migration...
+                    appState.players.forEach(player => {
+                        if (player.jerseyNumber === undefined) player.jerseyNumber = null;
+                        if (player.position === undefined) player.position = null;
+                    });
+                    appState.matches.forEach(match => {
+                        if (match.referee === undefined) match.referee = '';
+                        if (match.field === undefined) match.field = '';
+                        if (match.matchDate === undefined) match.matchDate = '';
+                        if (match.matchTime === undefined) match.matchTime = '';
+                    });
+                    updateUI();
+                } else {
+                    // Load from JSON
+                    fetch('./campeonato.json?v=' + new Date().getTime())
+                        .then(r => r.json())
+                        .then(data => {
+                            appState = data;
+                            saveState();
+                            updateUI();
+                        })
+                        .catch(err => {
+                            console.error('Erro ao carregar JSON:', err);
+                            updateUI();
+                        });
+                }
             }
         };
 
@@ -1434,23 +1534,13 @@
             }
         };
 
-        const reloadData = () => {
-            fetch('./campeonato.json?v=' + new Date().getTime())
-                .then(r => r.json())
-                .then(data => {
-                    if (data && typeof data === 'object') {
-                        appState = data;
-                        saveState();
-                        updateUI();
-                        showMessage(document.getElementById('home-message'), 'Dados recarregados com sucesso!', 'success');
-                    } else {
-                        throw new Error('Dados inválidos');
-                    }
-                })
-                .catch(err => {
-                    console.error('Erro ao recarregar JSON:', err);
-                    showMessage(document.getElementById('home-message'), 'Erro ao recarregar dados. Verifique o arquivo JSON.', 'error');
-                });
+        const reloadData = async () => {
+            try {
+                await loadState();
+                showMessage(document.getElementById('home-message'), 'Dados recarregados com sucesso!', 'success');
+            } catch (error) {
+                showMessage(document.getElementById('home-message'), 'Erro ao recarregar dados.', 'error');
+            }
         };
 
         // Initial load
