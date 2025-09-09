@@ -365,6 +365,188 @@
       "jerseyNumber": 10,
       "position": "Atacante",
       "teamId": "T-ltgzfrw4r"
+    },
+    {
+      "id": "P-5eu8oo7jr",
+      "name": "MYCHEL Clivati",
+      "jerseyNumber": 1,
+      "position": "Goleiro",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-ihi8muair",
+      "name": "ALBERTO M. Fugivala",
+      "jerseyNumber": 2,
+      "position": "Lateral",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-9t6zg6d5d",
+      "name": "ADRIANO Bernardo",
+      "jerseyNumber": 9,
+      "position": "Atacante",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-gjp9akvpv",
+      "name": "ANDERSON Rogeli Curti",
+      "jerseyNumber": 4,
+      "position": "Lateral",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-wihi3n2x2",
+      "name": "EDER Junior Martins",
+      "jerseyNumber": 6,
+      "position": "Lateral",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-mt2qttqza",
+      "name": "MARQUINHO",
+      "jerseyNumber": 8,
+      "position": "Meio-campo",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-kdontcqd2",
+      "name": "Sergio Rodrigues BANCO",
+      "jerseyNumber": 77,
+      "position": "Lateral",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-gypaqmo9g",
+      "name": "DORIEDSON De O. Pinho",
+      "jerseyNumber": 3,
+      "position": "Meio-campo",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-q30sgi7en",
+      "name": "Marcio ROGERIO Olivia",
+      "jerseyNumber": 7,
+      "position": "Lateral",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-aqk0r0u4a",
+      "name": "MARCELO Pereira Salgado",
+      "jerseyNumber": 17,
+      "position": "Lateral",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-531nbr6x7",
+      "name": "WAGNER Santana Maciel",
+      "jerseyNumber": 80,
+      "position": "Atacante",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-haxrkxe5r",
+      "name": "Francisco R. Felisberto CHICO",
+      "jerseyNumber": 15,
+      "position": "Zagueiro",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-xblatfqoe",
+      "name": "FLAVIO",
+      "jerseyNumber": 10,
+      "position": "Atacante",
+      "teamId": "T-3xuf6t2m0"
+    },
+    {
+      "id": "P-ogtlkgbfg",
+      "name": "GIOVANE Santos Cordeiro",
+      "jerseyNumber": 1,
+      "position": "Goleiro",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-l4blyb67w",
+      "name": "WALTER Cesar de Matos",
+      "jerseyNumber": 3,
+      "position": "Lateral",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-1dpcoycl3",
+      "name": "LUIS Henrique Marques",
+      "jerseyNumber": 30,
+      "position": "Lateral",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-cibnlu39h",
+      "name": "EMERSON Pereira",
+      "jerseyNumber": 11,
+      "position": "Meio-campo",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-gkw7q619f",
+      "name": "MARCOS Henrique Pereira",
+      "jerseyNumber": 5,
+      "position": "Meio-campo",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-c4dc5g504",
+      "name": "RUBENS Messias de Lima",
+      "jerseyNumber": 26,
+      "position": "Atacante",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-qcxwewv28",
+      "name": "RODRIGO kanashiro Souza",
+      "jerseyNumber": 8,
+      "position": "Meio-campo",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-grclurrsz",
+      "name": "JOEL Nunes de Almeida Neto",
+      "jerseyNumber": 6,
+      "position": "Lateral",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-bm2sftzre",
+      "name": "JAIRO Lazarini",
+      "jerseyNumber": 51,
+      "position": "Lateral",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-5lljomohg",
+      "name": "NEYMAR Candido da Silva",
+      "jerseyNumber": 19,
+      "position": "Zagueiro",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-lzwnxoks5",
+      "name": "MOISES A. dos Santos",
+      "jerseyNumber": 14,
+      "position": "Atacante",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-bn21j29we",
+      "name": "ADRIANO Cesar Daniel",
+      "jerseyNumber": 34,
+      "position": "Meio-campo",
+      "teamId": "T-ajmokr7az"
+    },
+    {
+      "id": "P-l0j1401wh",
+      "name": "Luis ROGERIO",
+      "jerseyNumber": 13,
+      "position": "Lateral",
+      "teamId": "T-ajmokr7az"
     }
   ],
   "matches": [
@@ -438,13 +620,13 @@
       "round": 2,
       "homeTeamId": "T-3xuf6t2m0",
       "awayTeamId": "T-ajmokr7az",
-      "scoreHome": null,
-      "scoreAway": null,
-      "played": false,
-      "referee": "",
-      "field": "",
-      "matchDate": "",
-      "matchTime": ""
+      "scoreHome": 0,
+      "scoreAway": 1,
+      "played": true,
+      "referee": "Edson",
+      "field": "Interno",
+      "matchDate": "2025-08-28",
+      "matchTime": "19:27"
     },
     {
       "id": "M-peoubgksy",
@@ -753,6 +935,13 @@
       "matchId": "M-1pvyk7czn",
       "playerId": "P-7tizjq313",
       "type": "yellowCard",
+      "minute": 1
+    },
+    {
+      "id": "E-xc9zwvnok",
+      "matchId": "M-b4r4uvcsl",
+      "playerId": "P-lzwnxoks5",
+      "type": "goal",
       "minute": 1
     }
   ]
